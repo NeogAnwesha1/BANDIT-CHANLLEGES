@@ -1,0 +1,368 @@
+#LEVEL 0
+
+#Level Goal
+The goal of this level is for you to log into the game using SSH
+
+#How To Solve
+REQ. COMMAND LINE “ssh -l bandit0 -p 2220
+bandit.labs.overthewire.org”
+ENTER PASSWORD “bandit0”
+
+#LEVEL 0-1
+
+#Level Goal
+The password for the next level is stored in a file called readme located in the home directory. Use this password to log into bandit1 using SSH.
+
+#Commands Used
+      ls:- stands for list; lists the files and folders in the current directory when it is not flagged.
+      cat:- stands for concatenate; reads  data from their file and gives their content as output.
+
+#How To Solve
+
+Inorder to get the list of files we use, “ ls”
+This returns “ readme” file
+Use “ cat readme” to read the content of file
+Password is “NH2SXQwcBdpmTEzi3bvBHMM9H66vVXjL”
+Login to “bandit1” using this password.
+ssh -l bandit1 -p 2220 bandit.labs.overthewire.org
+
+#Level 1-2
+
+#Level Goal
+The password for the next level is stored in a file called - located in the home directory.
+
+#How To Solve
+Repeat the steps of previous level
+Use “./” before the file name 
+cat ./-
+Password is "rRGizSaX8Mk1RTb1CNQoXTcYZWU6lgzi”
+ssh -l bandit2 -p 2220 bandit.labs.overthewire.org
+
+#Level 3 to 4
+
+# Level Goal
+The password for the next level is stored in a hidden file in the inhere directory.
+Commands Used
+Cd:- stands for change directory; used to change the current working directory.
+ls -a :- lists all the hidden files
+{NOTE:- ALL HIDDEN FILES AND FOLDERS ARE STORED WITH A DOT IN FRONT OF THEIR NAME}
+  
+#How To Solve
+Use “ ls ” to get the directory inhere
+cd inhere/
+Use “ls -a” to get a list of all hidden files inside inhere directory
+“ cat .hidden “ to read the content of .hidden file
+password is “  2EW7BBsr6aMMoJ2HjW067dm8EgX26xNe ”
+
+#Level 4 to 5
+
+#Level Goal
+The password for the next level is stored in the only human-readable file in the inhere directory.
+Commands Used
+file:-  used to determine the type of file and its data
+file ./*:-  used inorder for file to rad all the files’s file type
+
+#How To Solve
+Use “ ls ” to get the directory inhere
+cd inhere/
+Again use “ ls “ to get the list of files in inhere
+Use “ file ./*” to get the file type
+As only file07 is in ASCII text (human readable) , use “ cat ./-file07 “ to get the content of the file,
+PASSWORD IS “lrIWWI6bB37kxfiCQZqUdOIYfr6eEeqR”
+
+#Level 5 to 6
+
+#Level Goal
+The password for the next level is stored in a file somewhere under the inhere directory and has all of the following properties:
+human-readable
+1033 bytes in size
+not executable
+
+#Commands Used
+find:- used to locate the file on some user specified criteria.
+- size:- lists the section size as well as the overall size of the object files or archived files.
+- type:-  used to describe how its argument would be translated if used as commands.
+-executable:- used to check whether the file is executable or not.
+c parameter:- depicts the size in bytes.
+
+#How To Solve
+Use “ ls ” to get the directory inhere
+cd inhere/
+Again use “ ls “ to get the list of files in inhere.
+Use “find -type f -size 1033c ! - executable” to get the file with the given conditions
+Use “cat ./maybehere07/.file2” to read the file and get the password
+PASSWORD IS “P4L4vucdmLnm8I7Vl7jG1ApGSfjYKqJU”
+
+Level 6 to 7
+
+  Level Goal
+The password for the next level is stored somewhere on the server and has all of the following properties:
+owned by user bandit7
+owned by group bandit6
+33 bytes in size
+
+  How To Solve
+Use “ find / -user bandit7 -group bandit 6 -size 33c “ to find the file with the given conditions.
+Use “ cat /varlib/dpkg/info/bandut7.password “ to read the content of the file 
+Password is “z7WtoNQU2XfjmMtWA8u5rN4vzqu4v99S”
+
+Level 7 to 8
+
+  Level Goal
+The password for the next level is stored in the file data.txt next to the word millionth
+
+Commands Used
+Grep:- The grep command line searches a file for a particular pattern of characters, and displays all lines that contain that pattern.
+
+  How To Solve
+Use “ ls ” to get the file  inhere
+Use “  cat data.txt | grep millionth “ to read the content of file as well as get the password which is next to the word millionth.
+Password is “ TESKZC0XvTetK0S9xNwm25STk5iWrBvP ”
+
+Level 8 to 9
+
+  Level Goal
+The password for the next level is stored in the file data.txt and is the only line of text that occurs only once.
+
+Commands Used
+sort:- The sort command is used  to print the output of a file in given order
+uniq :- The uniq command can count and print the number of repeated lines
+uniq -u:- It allows you to print only unique lines.
+
+  How To Solve
+Use “ ls “ to get the file data.txt
+Use ”  sort data.txt | uniq -u “ sort the lines alphabetically and then remove all duplicates from the output.
+Password is “ EN632PlfYiZbn3PhVK3XOGSlNInNE00t “
+
+Level 9 to 10
+
+  Level Goal
+The password for the next level is stored in the file data.txt in one of the few human-readable strings, preceded by several ‘=’ characters.
+
+  How To Solve
+Use “ ls “ to get the file data.txt
+Since data.txt has both binary data and human readable strings, use “ strings data.txt | grep = “ to get the only human readable form of the content in the file
+Password is “ G7w8LIi6J3kTb8A7j9LgrywtEUlyyp6s ”
+
+Level 10 to 11
+
+  Level Goal
+The password for the next level is stored in the file data.txt, which contains base64 encoded data
+
+Commands Used
+base64:- The base64 command encodes binary strings into text representations using the base64 encoding format.
+--decode:- This option is used to decode any encoded data from standard input or from any file.
+
+  How To Solve
+Use “ ls “ to get the file data.txt
+Use “ cat data.txt | base64  --decode “  to get the password by decoding the encoded data.
+Password is “  6zPeziLdR2RKNdNYFNb6nVCKzphlXHBM  ”
+
+Level 11 to 12
+
+  Level Goal
+The password for the next level is stored in the file data.txt, where all lowercase (a-z) and uppercase (A-Z) letters have been rotated by 13 positions.
+
+Commands Used
+tr:- translates or deletes characters from standard input ( stdin ) and writes the result to standard output ( stdout )
+{NOTE:- ROT13 :- a simple letter substitution cipher that replaces a letter with the letter 13 letters}
+
+  How To Solve
+Since the letters are rotated by 13 positions, hence the content of data.txt file is encrypted with ROT13
+Use “ls” to get the file data.txt.
+Use “ cat data.txt “ to read the content of file 
+Use “ cat data.txt | tr ‘[A-Za-z]’ ‘[N-ZA-Mn-za-m]’ “ to decrypt the ROT13 encrypted line
+( since “ tr “ will not be continue to translate after z, so we use a-m and n-z )
+The password is “JVNBBFSmZwKKOP0XbFXOoW8chDz5yVRv”
+
+
+LEVEL 12-13
+Level Goal
+The password for the next level is stored in the file data.txt, which is a hexdump of a file that has been repeatedly compressed. For this level it may be useful to create a directory under /tmp in which you can work using mkdir.
+
+Commands Used
+xxd:- Used in Linux to make the hexdump of a file. It is also used to reverse this process.
+xvf flag:- is used to extract the files in an archived file.
+Tar command:- helps create, extract, and list archive contents
+
+How To Solve
+The ls command is used to locate the directory. The password is stored in a file in the form of a hex dump. Use the cat command to read the file. The password is not in a human readable format. We will require a directory with read and write rights in order to decompress. The tmp directory in root contains the required permissions.
+
+Make the directory fil3 in the tmp directory. Make use of the cd command to navigate to the directory. Verify that the file is present in this directory. To determine the file's type, use the file command. 
+To get the original file, use xxd, In order to reverse the operation and tell it what file to place its output in, we will use the 'r' parameter. We'll call it t3xt here. Repeat the file command. 
+This tells us that it is a gzip compressed file. We must rename the file and give it the appropriate gzip extension before we can decompress. For this, we'll employ the move(mv) command. The file was renamed to data2.gz. using the gzip command and d parameter.
+Similarly , continue the process of decompressing one file after another.
+Finally, after data.9 we get the password for next level.
+Password is  “wbWdlBxEir4CaE8LaPhauuOo6pwRmrDw”
+
+
+
+LEVEL 13-14
+
+Level Goal
+For this level, you don’t get the next password, but you get a private SSH key that can be used to log into the next level. 
+
+How To Solve
+use the ssh private key to advance to the next stage. First, let's use the ls command to locate that private key. Using it now will allow you to connect to SSH as bandit14.
+
+
+Level 14-15
+
+Level Goal
+The password for the next level can be retrieved by submitting the password of the current level to port 30000 on localhost.
+
+How To Solve
+
+Retrieve the password for the current level.To print the password, use the cat command. 
+Use telnet to connect to port 30000. Once connected, type in your current password. It will be checked, and if it matches, the next level's password will be displayed on the screen. To establish an SSH connection as bandit15, provide this password.
+Password for 14 is “fGrHPx402xGC7U7rXKDaxiWFTOiF0ENq”
+Password for 15 is “jN2kgmIXJ6fShzhT2avhotn4Zcka6tnt”
+
+
+
+Level 15-16
+
+Level Goal
+The password for the next level can be retrieved by submitting the password of the current level to port 30001 on localhost using SSL encryption.
+
+Commands Used
+Openssl :- open-source command line tool that is commonly used to generate private keys, create CSRs, install your SSL/TLS certificate, and identify certificate information.
+S_client:-  implements a generic SSL/TLS client which connects to a remote host using SSL/TLS. 
+-ign eof:- Inhibit shutting down the connection when end of file is reached in the input
+
+How To Solve
+use the openssl command with the s_client parameter to indicate that you are connected as a client and that the port 30001 is localhost. 
+To prevent the connection from being closed when the input reaches the end of the file, use the -ign eof parameter. 
+Give the connection the bandit15's password once it has been established. The password for the following level is given after it has been validated. 
+
+The password is “ JQttfApK4SeyHwDlI9SXGR50qclOAil1”
+
+
+
+Level 16-17
+  
+  Level Goal
+The credentials for the next level can be retrieved by submitting the password of the current level to a port on localhost in the range 31000 to 32000.
+
+Commands Used
+mkdir:- stands for 'make directory'; helps stands for 'make directory'
+Nmap:- used for exploring networks, performing security scans, network audit and finding open ports on remote machines.
+chmod:- stands for "change mode" ; restricts the way a file can be accessed.
+  
+How To Solve
+To find the precise port from the range, use Nmap to scan the ports. The output of the Nmap scan reveals that there is a message on port 31790 that suggests we must enter the password there.
+Use localhost with openssl to connect to this port.
+After establishing a connection, you must input the bandit16 password. This password will be verified. A successful match results in the delivery of an RSA key.
+We must make a private key in order to use this RSA key.
+So, using the mkdir command, we create a directory in the /tmp directory. Navigate to that recently formed directory and use the nano editor to create a private key.
+In the newly formed directory, paste the RSA key created previously.
+Any private key with such open access will not be allowed by SSH. Use the chmod command to apply permissions equal to 600 in order to alter the permissions. This implies that the file can only be read and written to by the owner. 
+Connect to SSH as bandit17 using this private key.
+
+
+
+Level 17-18
+  Level Goal
+There are 2 files in the homedirectory: passwords.old and passwords.new. The password for the next level is in passwords.new and is the only line that has been changed between passwords.old and passwords.new
+
+  How To Solve
+ls can be used to search for files. Password.new and Password.old are two separate files found.
+Find that password by using the diff command. The diff command provides the two necessary passwords.
+Try both these passwords to connect via SSH as bandit18.
+1st password “hga5tuuCLF6fFzUpnagiMN8ssu9LFrdg.”
+2nd password “U79zsNCl1urwJ5rU6pg7ZSCi7ifWOWpT”
+
+
+Level 18-19
+ 
+ Level Goal
+The password for the next level is stored in a file readme in the homedirectory. Unfortunately, someone has modified .bashrc to log you out when you log in with SSH
+ 
+ How To Solve
+Even after entering the right password (the first password), our connection was terminated.
+To deactivate the pseudo-tty allocation, use the -t parameter. Because of this, our session is at risk of being terminated.
+This time, we received a shell that cannot be seen.
+ls the command to be used again. This provides the readme file for us.
+After reviewing that file, we discover what appears to be the level's password.
+ Password is “awhqfNnAbc1naukrpqDYcF95h7HoMTrC”
+
+
+Level 19-20
+ 
+ Level Goal
+To gain access to the next level, you should use the setuid binary in the homedirectory. Execute it without arguments to find out how to use it. The password for this level can be found in the usual place (/etc/bandit_pass), after you have used the setuid binary.
+ 
+ How To Solve
+begin with the ls command.
+try to run the file to see the working of the script.
+Run the script using the cat command to read the password for the next level since the script executes a command as a different user.
+Password is “VxCazJaVykI6W36BkBU0mJTCM8rR95XT.”
+
+
+
+Level 20-21
+  
+  Level Goal
+There is a setuid binary in the homedirectory that does the following: it makes a connection to localhost on the port you specify as a command line argument. It then reads a line of text from the connection and compares it to the password in the previous level (bandit20). If the password is correct, it will transmit the password for the next level (bandit21)
+
+Commands Used
+Grep:- The grep command line searches a file for a particular pattern of characters, and displays all lines that contain that pattern.
+
+How To Solve
+Using the command ls, verify the files that are available.
+We have a script sunconnect.
+Run the file suconnect without any parameters and start another instance of the same shell.
+Run a netcat listener on the same port that we intend to suconnect from over another instance. But before doing the suconnect, we must launch the listener. After starting the suconnect.A session is grabbed by Netcat. The password we used to log in as user bandit20 must now be entered.
+When we enter a password, the suconnect software reads it and verifies it. The listener receives the password for the subsequent level.
+Password is “NvEJF7oVjkddltPSrdKEFOllh9V1IBcq”
+
+
+
+Level 21 to 22
+ 
+ Level Goal
+A program is running automatically at regular intervals from cron, the time-based job scheduler. Look in /etc/cron.d/ for the configuration and see what command is being executed
+ 
+ How To Solve
+To display a list of files inside a directory, use the ls command.
+Consider the cronjob bandit22 using the cat command since bandit22 is the next level.
+It indicates that a script may be found in /usr/bin/cronjob bandit22.sh. So, if you read that script, you'll discover that it stores the next user's password in a file inside the tmp directory.
+Password is “WdDozAdTM2z9DiFEQ2mGlwngMfj4EZff.”
+
+
+Level 22 to 23
+ 
+ Level Goal
+A program is running automatically at regular intervals from cron, the time-based job scheduler. Look in /etc/cron.d/ for the configuration and see what command is being executed.
+
+ 
+ How To Solve
+To display a list of files inside a directory, use the ls command.
+Consider the cronjob bandit23 using the cat command since bandit23 is the next level.
+It indicates that a script may be found in /usr/bin/cronjob bandit23.sh.
+Myname is a variable in this script that stores the results of the whoami command, which in essence returns Bandit22.
+The procedure is then performed directly on this variable. It is MD5-encrypted and prints "I am user bandit22." The file with the password for the next level is named using this hash.
+We now execute the command with the value of the variable myname set to bandit23 in order to obtain the password for the bandit23 user. We will receive the hash value from this, and the name of the file in the tmp directory will also be revealed.
+Password is “QYw0Y2aiA672PsMmh9puTQuhoz8SyR2G”
+
+
+
+Level 23-24 
+ 
+ Level Goal
+A program is running automatically at regular intervals from cron, the time-based job scheduler. Look in /etc/cron.d/ for the configuration and see what command is being executed.
+
+  How To Solve
+To display a list of files inside a directory, use the ls command.
+Consider the cronjob bandit23 using the cat command since bandit24 is the next level.
+It indicates that a script may be found in /usr/bin/cronjob bandit24.sh.
+To obtain the password for the following directory, we must write our own script and place it in the /var/spool. This script will cat the password file from the /etc/bandit pass/bandit24 directory.
+We will first use nano to create a file, then we will construct a script that reads the password from the /etc/bandit pass file and writes it to the file we just made inside the directory.
+We must now properly provide read and write permissions to both the directory we built and the script we just produced in order for it to execute effectively.
+The password we were looking for in this level is then found when we read the contents of the newly created file after seeing it when we list the files inside the directory.
+Password is “ VAfGXJ1PBSsPSnvsjI8p759leLZ9GGar ”
+
+
+
+
+
